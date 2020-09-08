@@ -1,8 +1,9 @@
-import React, { useReducer} from 'react';
+import React, { useReducer, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 import List from './components/List';
+import TodoForm from './components/TodoForm';
 
 import formReducer, { initToDos } from './reducers/formReducer';
 
@@ -11,11 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <form>
-        <label>Add To Do</label>
-        <input type="text" />
-        <button>Submit</button>
-      </form>
+      <TodoForm list={state} dispatch={dispatch}/>
       <List list={state}/>
     </div>
   );

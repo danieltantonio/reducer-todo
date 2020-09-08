@@ -11,7 +11,7 @@ export const initToDos = {
 const formReducer = (state, action) => {
   switch(action.type) {
       case 'ADD_TODO':
-          return { list: [action.value]};
+          return { list: [action.value, ...state.list]};
       default:
           return state;
   }
