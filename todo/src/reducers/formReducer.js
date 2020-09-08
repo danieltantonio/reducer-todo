@@ -20,7 +20,17 @@ const formReducer = (state, action) => {
                   return item;
               }
           })
-          return { ...state }
+          return { ...state };
+      case 'DEL_TODO':
+          const completedArr = state.list.filter(item => item.completed);
+          const checkIfEmpty = (arr) => {
+              if(arr.length <= 0) {
+                  return [ ...state.completed ]
+              }
+
+              return [arr, ...state.completed];
+          }
+          return { ...state, list: state.list.filter(item => item.completed === false), completed:checkIfEmpty(completedArr) }
       default:
           return state;
   }

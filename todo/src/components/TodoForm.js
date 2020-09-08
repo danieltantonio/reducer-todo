@@ -21,7 +21,7 @@ const TodoForm = props => {
             <label>Add To Do: </label>
             <input type="text" value={formItem} onChange={onChange}/>
             <button type="submit">Submit</button>
-            <button type="button" onClick={() => console.log('It works')}>Clear Complete</button>
+            <button type="button" onClick={() => dispatch({ type: 'DEL_TODO' })}>Clear Complete</button>
           </form>
         </div>
     )
