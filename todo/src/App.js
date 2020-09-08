@@ -11,11 +11,15 @@ import formReducer, { initToDos } from './reducers/formReducer';
 function App() {
   const [state, dispatch] = useReducer(formReducer, initToDos);
 
+  const markCompleted = todo => {
+    dispatch({ type: 'TOGGLE_TODO', index: todo, id: todo.id })
+  }
+
   return (
     <div className="App">
       <TodoForm list={state} dispatch={dispatch}/>
-      <List list={state} dispatch={dispatch}/>
-      <Completed list={state.completed}/>
+      <List state={state} markCompleted={markCompleted}/>
+      <Completed />
     </div>
   );
 }

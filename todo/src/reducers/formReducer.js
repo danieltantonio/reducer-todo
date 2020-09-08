@@ -12,17 +12,15 @@ export const initToDos = {
 const formReducer = (state, action) => {
   switch(action.type) {
       case 'ADD_TODO':
-          return { list: [action.value, ...state.list]};
+          return { ...state, list: [action.value, ...state.list]};
       case 'TOGGLE_TODO':
-          return Object.assign({}, state, {
-              list: state.list.map((todo, index) => {
-                  if(index === action.index) {
-                      return Object.assign({}, todo, {
-                          completed: !todo.completed
-                      })
-                  }
-              })
-          });
+          state.list.map(item => {
+              if(item.id === action.id) {
+                  item.completed = !item.completed;
+                  return item;
+              }
+          })
+          return { ...state }
       default:
           return state;
   }
