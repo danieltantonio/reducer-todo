@@ -4,6 +4,7 @@ import './App.css';
 
 import List from './components/List';
 import TodoForm from './components/TodoForm';
+import Completed from './components/Completed';
 
 import formReducer, { initToDos } from './reducers/formReducer';
 
@@ -13,7 +14,8 @@ function App() {
   return (
     <div className="App">
       <TodoForm list={state} dispatch={dispatch}/>
-      <List list={state}/>
+      <List list={state} dispatch={dispatch}/>
+      <Completed list={state.completed}/>
     </div>
   );
 }

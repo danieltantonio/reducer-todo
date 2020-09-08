@@ -7,6 +7,7 @@ const TodoForm = props => {
     const onSubmit = e => {
         e.preventDefault();
         dispatch({ type: 'ADD_TODO', value: { item: formItem, completed: false, id: (list.list[0].id + 1) } })
+        setFormItem('');
     }
 
     const onChange = e => {
@@ -19,7 +20,8 @@ const TodoForm = props => {
           <form onSubmit={onSubmit}>
             <label>Add To Do: </label>
             <input type="text" value={formItem} onChange={onChange}/>
-            <button>Submit</button>
+            <button type="submit">Submit</button>
+            <button type="button" onClick={() => console.log('It works')}>Clear Complete</button>
           </form>
         </div>
     )
